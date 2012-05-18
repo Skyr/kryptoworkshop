@@ -21,3 +21,54 @@ Ausweg: Zufällig gewählten Initialwert für Counter, im Klartext mitübertrage
 
 Vorsicht, Blockchiffre muß geeignet sein: Klartext ist ja bekannt (Counter), die Chiffre muß so konstruiert sein, daß selbst beim Vorliegen von Klar- und Chiffretext kein Rückschluß auf den verwendeten Schlüssel möglich ist.
 
+
+\chapter{Zufallszahlen}
+
+Für einen sicheren Generator darf die Folge nur rekonstruierbar sein, wenn der interne Zustand des Generators bekannt ist. Insbesondere darf aus $x_n$ nicht auf $x_{n-1}$ und $x_{n+1}$ geschlossen werden können.
+
+\section{Linearer Kongruenzgenerator}
+
+$$x_0 = s $$
+$$x_{i+1} = (a x_i + b)\ mod\ n$$
+
+$a$, $b$ und $n$ sind festgelegt; das „Geheimnis” für die Sicherheit steckt im Seed $s$. Um vernünftige Ergebnisse zu bekommen, sollten $a$ und $b$ teilerfremd zu $n$ sein. Offensichtlich ist der Generator unsicher: Der Folgewert kann direkt berechnet werden, der vorherige Wert läßt sich durch Lösen der linearen Gleichung bestimmen.
+
+Üblicherweise benutzt man als Ausgabe jedoch nicht die gesamte Zahl, sondern nur einen Teil der Information (am besten nur ein einzelnes Bit, da man so möglichst wenig Information über den internen Zustand preis gibt). Das „rettet” das Verfahren dennoch nicht -- mit jeder Ausgabe kann eine weitere Gleichung eines linearen Gleichungssystems aufgestellt werden, welches schließlich zu lösen ist.
+
+\section{Sicheres Verfahren auf Basis des Quadratwurzel-Problems}
+
+Seien $p$ und $q$ (große) Primzahlen, $n=p q$.
+$$x_0 = s $$
+$$x_{i+1} = x_i^2\ mod\ n$$
+$$r_i = x_i\ mod\ 2$$
+
+Ausgabe $r_i$ ist pro Iteration ein einzelnes Bit (um über den internen Zustand nichts zu verraten). Die Sicherheit resultiert auf dem Quadratwurzelproblem, für welches keine effiziente Lösung bekannt ist.
+
+\section{Chiffrierverfahren im Counter-Mode}
+
+Wähle einen geheimen, rein zufälligen Schlüssel $k$. Verschlüssele mit diesem ein Zähler, der bei jedem Schritt inkrementiert wird:
+
+$$x_i = E_k(i)$$
+
+Problem bei Blockchiffren ist die Bijektivität: Da zu jedem Chiffretext exakt ein Klartext zugeordnet ist (und umgekehrt), kann über sehr lange Zeit beobachtet werden, welche Blöcke bereits aufgetreten sind; eine Wiederholung ist aufgrund der Bijektivität ausgeschlossen, was ein gewisses Bias ergibt. Blockchiffren ergeben somit zwar brauchbare, aber zumindest theoretisch angreifbare Zufallszahlengeneratoren.
+
+In der Praxis ist das Verfahren sinnvoll sicher -- und weniger subtil als die Verwendung von Hashfunktionen (s.u.), simplicity wins :-)
+
+\section{Verwendung von Hashfunktionen}
+
+$$x_i = H(s+i) $$
+
+Dies ergibt (sofern $H$ eine starke Hashfunktion ist) einen brauchbaren Zufallszahlengenerator. Eine Schwäche ist jedoch, daß mit dem Bekanntwerden des internen Zustands (z.B.~durch Einbruch in den entsprechenden Rechner) auch die Zufallszahlen der Vergangenheit berechnet werden können.
+
+Verbesserter Ansatz:
+
+$$x_0 = s$$
+$$x_{i+1} = H(x_i + s)$$
+
+Zu berücksichtigen ist, daß es hierbei zu verkürzten Perioden geben kann -- im Schnitt erreicht man eine Periode entsprechend der Quadratwurzel des Wertebereichs(??? ertes: Korrekt? Quelle?). Um Perioden zu vermeiden, kann $i$ noch einbezogen werden (so gibt es zwar Wiederholungen, aber Perioden werden durchbrochen):
+
+$$x_{i+1} = H(x_i + s + i)$$
+
+Um statistische Vorteile durch solche Wiederholungen zu vermeiden, sollte eine Hashfunktion mit entsprechend großem Wertebereich (SHA1 und besser) verwendet werden.
+
+

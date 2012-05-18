@@ -1,0 +1,49 @@
+\chapter{Logik}
+
+Notation:
+
+\begin{prooftree}
+\AxiomC{$a \wedge b$}
+\AxiomC{$a$}
+\BinaryInfC{$b$}
+\end{prooftree}
+
+„Wenn alle Bedingungen oberhalb des Strichs erfüllt sind, gilt auch die Aussage unterhalb des Strichs“.
+
+
+\section{Definition der natürlichen Zahlen}
+
+„Die natürlichen Zahlen sind alle Werte von $x$, für die $n(x)$ gilt”:
+
+$$\mathbb{N} = \left\{ x | n(x) \right\}$$
+
+Notations-Definition: $x'$ ist der Nachfolger von $x$.
+
+Definition der Addition:
+
+$$x+0=x$$
+$$x+y'=x'+y$$
+
+Daraus läßt sich das Assoziativgesetz ableiten:
+
+$$(a+b)+c = a+(b+c)$$
+
+Definition der Multiplikation:
+
+$$x \cdot 0=0$$
+$$x \cdot y'=x+(x \cdot y)$$
+
+Konvention: Es gilt Punkt vor Strich; zwischen Variablennamen kann das Multiplikationszeichen weggelassen werden.
+
+\section{Definition der ganzen Zahlen}
+
+$$\mathbb{Z}' = \left\{ (a,b) | a \in \mathbb{N}, b \in \mathbb{N}, a+x=b \right\}$$
+
+$\mathbb{Z}'$ definiert noch nicht die ganzen Zahlen, sondern eine Menge von Gleichungen; über $x$ wird noch nichts ausgesagt -- für die Definition steht ja nur $\mathbb{N}$ zur Verfügung. Bildung von Äquivalenzklassen der Paare $(a,b)$:
+
+$$ \exists k \in \mathbb{N} \big((a_1+k,b_1+k)=(a_2,b_2)\big) \vee \big((a_1,b_1)=(a_2+k,b_2+k)\big) \iff (a_1,b_1) \equiv (a_2,b_2) $$
+
+Definition der ganzen Zahlen über „kanonische Repräsentanten“:
+
+$$\mathbb{Z} = \left\{ (a,0) | a \in \mathbb{N} \right\} \cup \left\{ (0,b) | b \in \mathbb{N} \right\} $$
+

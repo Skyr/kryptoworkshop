@@ -1,0 +1,147 @@
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[a4paper,10pt,bibtotoc,twoside,openright,pointlessnumbers,normalheadings,DIV=9
+%,draft
+]{scrbook}
+\KOMAoptions{DIV=last}
+
+
+\pagestyle{headings}
+\usepackage{ngerman}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\ttdefault}{pcr}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{tabularx}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{listings}
+\lstset{language=Java,
+  showstringspaces=false,
+  frame=single,
+  numbers=left,
+  basicstyle=\ttfamily,
+  numberstyle=\tiny}
+
+% hier Namen etc. einsetzen
+\newcommand{\fullname}{Stefan Schlott}
+\newcommand{\email}{stefan@ploing.de}
+\newcommand{\titel}{Notizen Kryptoworkshop Shackspace}
+\newcommand{\jahr}{2012}
+
+%color in tables
+\usepackage{colortbl}
+\definecolor{Gray}{rgb}{0.80784, 0.86667, 0.90196} %dunkelblau
+\definecolor{Lightgray}{rgb}{0.9176, 0.95, 0.95686} %hellblau
+\definecolor{Akzent}{rgb}{0.6627, 0.63529, 0.55294} %akzentfarbe
+\setlength{\arrayrulewidth}{0.1pt}
+
+\clubpenalty10000
+\widowpenalty10000
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.4ex plus 0.35ex minus 0.3ex}
+
+% Tiefe, bis zu der Überschriften in das Inhaltsverzeichnis kommen
+\setcounter{tocdepth}{3}
+
+\pdfinfo{
+  /Author (\fullname)
+  /Title (\titel)
+  /Producer     (pdfeTex 3.14159-1.30.6-2.2)
+  /Keywords ()
+}
+
+\usepackage{hyperref}
+\hypersetup{
+pdftitle=\titel,
+pdfauthor=\fullname,
+pdfsubject={Workshop-Skript},
+pdfproducer={pdfeTex 3.14159-1.30.6-2.2},
+colorlinks=false,
+pdfborder=0 0 0	% keine Box um die Links!
+}
+
+%Trennungsregeln
+\hyphenation{Sil-ben-trenn-ung}
+
+% Schönere Bullets bei Aufzählungen
+% \renewcommand{\labelitemi}{$\bullet$}
+% \renewcommand{\labelitemii}{$\circ$}
+% \renewcommand{\labelitemiii}{$\cdot$}
+
+% TeX-Tricks
+% Dank UTF8 gehen auch Anführungszeichen toll:
+% „“
+% Tastenkombinationen:
+% „ – Windows: AltGr+V, OS X: Alt+^
+% “ – Windows: AltGr+B, OS X: Alt+2
+% Geschützes Leerzeichen: ~
+
+
+\begin{document}
+\frontmatter
+
+% Titelseite
+\thispagestyle{empty}
+\begin{addmargin*}[4mm]{-32mm}
+
+\includegraphics[height=1.8cm]{images/logo_shack_brightbg}
+
+\vspace{10cm}
+
+\parbox{140mm}{\bfseries \huge \titel}\\[0.5em]
+\end{addmargin*}
+
+
+% Impressum
+\clearpage
+\thispagestyle{empty}
+{ \small
+  \flushleft
+  „\titel“\\
+  Fassung vom \today \\ \vfill
+
+  \vspace{1cm}
+  \copyright~\jahr~\fullname\\[0.5em]
+% Falls keine Lizenz gewünscht wird bitte den folgenden Text entfernen.
+% Die Lizenz erlaubt es zu nichtkommerziellen Zwecken die Arbeit zu
+% vervielfältigen und Kopien zu machen. Dabei muss aber immer der Autor
+% angegeben werden. Eine kommerzielle Verwertung ist für den Autor
+% weiter möglich.
+Dieses Werk ist unter der Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany License lizensiert: \url{http://creativecommons.org/licenses/by-nc-sa/3.0/de/}
+}
+
+
+% ab hier Zeilenabstand 1,4 fach 10pt/14pt
+\setstretch{1.4}
+
+\tableofcontents
+
+\mainmatter
+\input{chapters/sitzung-02}
+\input{chapters/sitzung-03}
+\input{chapters/sitzung-04}
+
+
+\appendix
+% hier Anhänge einbinden
+%\input{chapters/sources}
+
+\backmatter
+
+\bibliographystyle{plaindin} % Nummern und alphabetisch sortiert
+%\bibliographystyle{alphadin} % Buchstaben und sortiert
+%\bibliographystyle{abbrvdin} % Nummern und abgekürzte Namen
+%\bibliographystyle{unsrtdin} % Nummern und unsortiert
+\bibliography{bibliography}
+
+\end{document}

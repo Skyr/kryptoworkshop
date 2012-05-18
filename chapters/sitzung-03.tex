@@ -1,0 +1,23 @@
+\section{Onetime-Pad}
+
+Komplett zufälliger Bitstrom
+
+Einzig wirklich sichere Quelle für Zufall: Quantenmechanik.
+
+Nicht wiederverwenden (doppelt verwenden: Reduzierung auf Vigenere-Chiffre)
+
+
+\chapter{Stromchiffren}
+
+Stromchiffre = Pseudozufallszahlengenerator xor Klartext (bitweise)
+
+Zufallszahlen generieren: Blockchiffre im Countermode:
+
+Zähler mit (echt zufälligem) Schlüssel verschlüsseln --> ein Block Pseudozufalls-Bits
+
+Auch hier: Zufallsstrom nicht wiederverwenden
+
+Ausweg: Zufällig gewählten Initialwert für Counter, im Klartext mitübertragen
+
+Vorsicht, Blockchiffre muß geeignet sein: Klartext ist ja bekannt (Counter), die Chiffre muß so konstruiert sein, daß selbst beim Vorliegen von Klar- und Chiffretext kein Rückschluß auf den verwendeten Schlüssel möglich ist.
+

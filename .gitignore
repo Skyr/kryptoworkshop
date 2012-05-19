@@ -8,4 +8,4 @@
 *.bak
 images/*.pdf
 /*.pdf
-
+/latex-docs

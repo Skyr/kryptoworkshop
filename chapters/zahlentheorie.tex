@@ -1,4 +1,4 @@
-\chapter{Logik}
+\chapter{Zahlentheorie}
 
 Notation:
 
@@ -13,27 +13,75 @@ Notation:
 
 \section{Definition der natürlichen Zahlen}
 
+\subsection{Axiome der natürlichen Zahlen}
+
 „Die natürlichen Zahlen sind alle Werte von $x$, für die $n(x)$ gilt”:
 
 $$\mathbb{N} = \left\{ x | n(x) \right\}$$
 
 Notations-Definition: $x'$ ist der Nachfolger von $x$.
 
-Definition der Addition:
 
-$$x+0=x$$
-$$x+y'=x'+y$$
+Die fünf Axiome der natürlichen Zahlen:
+
+\begin{enumerate}
+  \item $0$ ist eine natürliche Zahl:
+  \begin{prooftree}
+  \AxiomC{}
+  \UnaryInfC{$n(0)$}
+  \end{prooftree}
+
+  \item Wenn $x$ eine natürliche Zahl ist, ist $x'$, der Nachfolger von $x$, auch eine natürliche Zahl:
+  \begin{prooftree}
+  \AxiomC{$n(x)$}
+  \UnaryInfC{$n(x')$}
+  \end{prooftree}
+
+  \item Wenn der Nachfolger von $x$ gleich dem Nachfolger von $y$ ist, so ist $x$ gleich $y$:
+  \begin{prooftree}
+  \AxiomC{$x'=y'$}
+  \UnaryInfC{$x=y$}
+  \end{prooftree}
+
+  \item Wenn $x$ eine natürliche Zahl ist, so ist ihr Nachfolger nie $0$:
+  \begin{prooftree}
+  \AxiomC{$n(x)$}
+  \UnaryInfC{$x' \ne 0$}
+  \end{prooftree}
+
+  \item Wenn $x$ eine natürliche Zahl ist, so ist sie entweder $0$ oder sie besitzt einen Vorgänger $y$, welcher ebenfalls eine natürliche Zahl ist:
+  \begin{prooftree}
+  \AxiomC{$n(x)$}
+  \UnaryInfC{$x=0 \vee (\exists y: y'=x \wedge n(y) )$}
+  \end{prooftree}
+\end{enumerate}
+
+
+\subsection{Definition der Addition}
+
+\begin{enumerate}
+  \item $0$ ist das neutrale Element der Addition: $x+0=x$
+  \item $x+y'=x'+y$ oder $x+y' = (x+y)'$
+\end{enumerate}
 
 Daraus läßt sich das Assoziativgesetz ableiten:
 
 $$(a+b)+c = a+(b+c)$$
 
-Definition der Multiplikation:
 
-$$x \cdot 0=0$$
-$$x \cdot y'=x+(x \cdot y)$$
+\subsection{Definition der Multiplikation}
+
+\begin{enumerate}
+  \item $x \cdot 0=0$
+  \item $x \cdot y'=x+(x \cdot y)$
+\end{enumerate}
+
+Daraus läßt sich ebenfalls das Assoziativgesetz ableiten:
+
+$$(a \cdot b) \cdot c = a \cdot (b \cdot c)$$
 
 Konvention: Es gilt Punkt vor Strich; zwischen Variablennamen kann das Multiplikationszeichen weggelassen werden.
+
 
 \section{Definition der ganzen Zahlen}
 

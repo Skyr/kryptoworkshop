@@ -24,7 +24,13 @@ Vorsicht, Blockchiffre muß geeignet sein: Klartext ist ja bekannt (Counter), di
 
 \chapter{Zufallszahlen}
 
-Für einen sicheren Generator darf die Folge nur rekonstruierbar sein, wenn der interne Zustand des Generators bekannt ist. Insbesondere darf aus $x_n$ nicht auf $x_{n-1}$ und $x_{n+1}$ geschlossen werden können.
+Für einen sicheren Generator darf die Folge nur rekonstruierbar sein, wenn der interne Zustand des Generators bekannt ist. Insbesondere darf aus $x_n$ nicht auf $x_{n-1}$ und $x_{n+1}$ geschlossen werden können. Die Eigenschaften lassen sich definieren über:
+
+\begin{itemize}
+  \item{Forward Secrecy:} Aus einem gegebenen Wert darf nicht auf die folgenden Werte geschlossen werden können.
+  \item{Backward Secrecy:} Aus einem gegebenen Wert darf nicht auf die vorhergehenden Werte geschlossen werden können.
+  \item{Lange Periode:} Die Länge der Ausgabe bis zu ihrer Wiederholung muß möglichst lang sein.
+\end{itemize}
 
 \section{Linearer Kongruenzgenerator}
 
@@ -78,8 +84,8 @@ Hashfunktionen sind Einwegfunktionen -- aus der Ausgabe kann nicht auf die Einga
 
 Angriffsarten auf Hashfunktionen:
 \begin{itemize}
-\item{Pre-Image Attack (Urbild-Angriff)} sucht zu einem gegebenen Hash ein passendes Urbild.
-\item{Collision Attack (Kollisionsattacke)} sucht zwei Werte, welche auf denselben Hashwert abbilden.
-\item{Length Extension Attack} konstruiert aus einem Hash und der Länge des Ursprungstext einen (neuen) Hashwert, welcher zu dem (unbekannten) Ursprungstext und einer (berechneten) Text-Extension paßt.
+\item{Pre-Image Attack (Urbild-Angriff)} sucht zu einem gegebenen Hash ein passendes Urbild: Er bestimmt zu einem gegebenen $y=h(x)$ ($x$ ist natürlich unbekannt) ein $x'$, sodass gilt: $y=h(x')$.
+\item{Collision Attack (Kollisionsattacke)} sucht zwei Werte, welche auf denselben Hashwert abbilden: Der Angriff liefert zwei Werte $x_1$ und $x_2$, sodass gilt: $h(x_1)=h(x_2)$.
+\item{Length Extension Attack} konstruiert aus einem Hash und der Länge des Ursprungstext einen (neuen) Hashwert, welcher zu dem (unbekannten) Ursprungstext und einer (berechneten) Text-Extension paßt: Gegeben sei $y = h(x)$.(wobei $x$ unbekannt ist). Mit dem Angriff bestimmt man ein $x'$ und $y'$, für welche gilt: $ y' = h(x \circ x')$ ($\circ$ bedeutet die Konkatenation, also das Aneinanderhängen).
 \end{itemize}
 

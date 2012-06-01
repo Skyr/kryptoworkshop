@@ -1,0 +1,35 @@
+\chapter{Gruppentheorie}
+
+Sei $M$ eine Menge, sowie $*$ eine Funktion, welche zwei Elemente auf $M$ auf ein weiteres Element auf $M$ abbildet. $(M,*)$ nennen wir eine {\em Halbgruppe (Semigroup)}, wenn gilt:
+\begin{enumerate}
+  \item $*$ ist geschlossen, also $\forall e_1, e_2 \in M: e_1 * e_2 \in M$
+  \item $*$ ist assoziativ, also $x*(y*z)=(x*y)*z$
+\end{enumerate}
+
+$(M,*,e)$ heißt {\em Monoid}, wenn zusätzlich gilt:
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+  \item $e$ ist neutrales Element, also $x*e = x = e*x$
+\end{enumerate}
+
+Ein Beispiel für einen Monoid ist die Operation $+$ über den Natürlichen Zahlen: $(\mathbb{N},+,0)$.
+
+$(M,*,e)$ heißt {\em Gruppe}, wenn zusätzlich gilt:
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+  \item Für alle Elemente $x$ existiert ein inverses Element $y$:
+  $$\forall x \in M\ \exists y \in M: x*y=e$$
+\end{enumerate}
+
+
+Es kann nur ein neutrales Element geben: Angenommen, wir hätten zwei unterschiedliche neutrale Elemente $e_1$ und $e_2$. Setze in Regel 3 $x=e_1$:
+$$ e_1 * e_2 = e_1 = e_2 * e_1 $$
+Setze in Regel 3 $x=e_2$:
+$$ e_2 * e_1 = e_2 = e_1 * e_2 $$
+Ineinandereingesetzt gilt damit auch:
+$$ e_2 = e_1 * e_2 = e_1 $$
+Dies ist ein Widerspruch zur Annahme.
+
+

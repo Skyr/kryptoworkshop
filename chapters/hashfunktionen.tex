@@ -13,9 +13,10 @@ Angriffsarten auf Hashfunktionen:
 
 Basismodell für viele bekannte Hashfunktionen (MD5, SHA, etc.).
 
-Input  |....|....|....|....|..(Length padding)  (in Blöcke unterteilt; letzter Block aufgefüllt)
-
-$h_0$ -> f -> f -> f -> f -> f -> out -> Hashwert
+\begin{center}
+\def\svgwidth{0.8\columnwidth}
+\input{images/merkle-darmgard-1.pdf_tex}
+\end{center}
 
 $h_0$ ist ein für den Algorithmus spezifischer Startwert. $f$ ist die Mixingfunktion, $out$ die abschließende Ausgabefunktion. In der Regel ist $out$ die Identitätsabbildung. Notwendige Voraussetzung für $f$ ist, daß sie nicht linear ist.
 

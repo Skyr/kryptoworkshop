@@ -33,3 +33,16 @@ $$ e_2 = e_1 * e_2 = e_1 $$
 Dies ist ein Widerspruch zur Annahme.
 
 
+Sei $(M,+,0)$ eine Gruppe. $(U,+,0)$ ist eine {\em Untergruppe} (oder {\em Subgruppe}), wenn gilt:
+\begin{enumerate}
+  \item $U \subseteq M$
+  \item $\forall x,y \in U: x+y \in U$
+  \item $\forall x \in U \exists y \in U: x+y=0$ (es gibt zu jedem $x$ ein Inverses)
+  \item $0 \in U$
+\end{enumerate}
+
+Eine Eigenschaft von Subgruppen: Sei $\abs{M}$ die Ordnung (Mächtigkeit) der Menge $M$ (also die Anzahl der Elemente). Für alle Untergruppen $U$ von $M$ gilt: $\abs{M}\ mod\ \abs{U} = 0$. Die Mächtigkeit der Hauptgruppe ist also immer teilbar durch die Mächtigkeit der Untergruppe.
+
+Notation: $\mathbb{Z}/10\mathbb{Z}$ bezeichnet die Menge der Elemente zwischen 0 und ausschließlich 10, also enthält die Elemente $\set{0,1,2,3,4,5,6,7,8,9})$. $\mathbb{Z}/10\mathbb{Z}^*$ folgt derselben Vorschrift, schließt allerdings die Null aus -- dies wären alos die Elemente $\set{1,2,3,4,5,6,7,8,9})$.
+
+Beispiel für eine Subgruppe: Sei $G = (\mathbb{Z}/10\mathbb{Z}, \oplus, 0)$ eine Gruppe. $\abs{G}$ ist somit 10. Eine Subgruppe wäre beispielsweise $U = \set{0,5}$.

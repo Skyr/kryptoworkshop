@@ -90,6 +90,18 @@ pdfborder=0 0 0	% keine Box um die Links!
 % Geschützes Leerzeichen: ~
 
 \newcommand\doubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}
+\newcommand{\abs}[1]{\ensuremath{\left\vert#1\right\vert}}
+\makeatletter
+\newcommand{\set}[2][\relax]{
+\ifx#1\relax \ensuremath{
+\left\lbrace#2\right\rbrace}
+\else \ensuremath{%
+  \setbox0=\hbox{\ensuremath{#2}}
+  \dimen@\ht0
+  \advance\dimen@ by \dp0
+  \left\lbrace\left.#1\rule[-\dp0]{0pt}{\dimen@}\right|#2\right\rbrace}
+\fi}
+\makeatother
 
 \begin{document}
 \frontmatter
